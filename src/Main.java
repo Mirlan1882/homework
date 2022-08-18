@@ -1,23 +1,39 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        int temp = 5;
-        int age = 20;
-        System.out.println(nameofmetod(temp, age));
-        System.out.println(nameofmetod(20, 6));
-        System.out.println(nameofmetod(20, 7));
-        System.out.println(nameofmetod(-40, 6));
-        System.out.println(nameofmetod(25, 54));
-        System.out.println(nameofmetod(23, 45));
-    }
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<String> listA = new ArrayList<>();
+        ArrayList<String> listB = new ArrayList<>();
+        ArrayList<String> listC = new ArrayList<>();
 
-        private static String nameofmetod(int temp, int age) {
-            if (age >= 20 && age <= 45 && temp >= -20 && temp <= 30) {
-                return "можно идти гулять";
-            } else if (age > 0 && age <= 20 && temp >= 0 && temp <= 28) {
-                return "можно идти гулять";
-            } else if (age >= 45 && temp >= -10 && temp <= 25) {
-                return "можно идти гулять";
-            } else
-                return "оставайся дома";
+        for (int i = 0; i < 5; i++) {
+            listA.add(scanner.nextLine());
         }
+        System.out.println(listA);
+        for (int i = 0; i < 5; i++) {
+            listB.add(scanner.nextLine());
+        }
+        System.out.println(listB);
+        Collections.reverse(listB);
+        Integer x = 0;
+        while (listC.size()<listA.size()+listB.size()){
+            listC.add(listA.get(x) );
+            listC.add(listB.get(x) );
+            x++;
+        }
+        listC.add(listA.get(0));
+        listC.add(listB.get(1));
+        System.out.println(listC);
+        Collections.sort(listC, new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return o1.length()-o2.length() ;
+            }
+        });
+        System.out.println(listC);
     }
+}
